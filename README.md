@@ -262,9 +262,9 @@ Forwarding from [::1]:8080 -> 8080
 
 ![cockroach-databases.png](doc/source/images/cockroachdatabases.png)
 
-### Step 4: Perform CRUD Operations on CockroachDB using python runtime and Jupyter Notebook
+### Step 4: Perform DML Operations on CockroachDB using python runtime and Jupyter Notebook
 
-- Once we have the CockroachDB UP and running, user and database created, we can now explore the JSON support by CockroachDB in a python runtime using Jupyter Notebook.
+- Once we have the CockroachDB UP and running, user and database created, we can now perform DML Operations on CockroachDB in a python runtime using Jupyter Notebook.
 
 - In Terminal run the following command to port forward `26257` port from the CockroachDB database instance which we will be using in our Jupyter Notebook to establish a connection with the CockroachDB database instance.
 
@@ -279,11 +279,7 @@ Forwarding from [::1]:26257 -> 26257
 
 - We will be working with Jupyter Notebook, you can use tools like [Anaconda](https://www.anaconda.com/products/individual) to open the Jupyter Notebook or [install Jupyter Notebook from python-pip](https://jupyter.org/install).
 
-- Download and open the notebook [Store-and-query-unstructured-Json-CockroachDB.ipynb](Store-and-query-unstructured-Json-CockroachDB.ipynb) in your local machine.
-
-- We will be using <http://dummy.restapiexample.com/api/v1/employees> API for the demonstration purpose.
-
-![nb-api](doc/source/images/nbapi.png)
+- Download and open the notebook [dml-operations-with-cockroachdb.ipynb](dml-operations-with-cockroachdb.ipynb) in your local machine.
 
 - Click on the **Cell** tab and click on **Run All** as shown.
 
@@ -316,7 +312,7 @@ root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb>
    user_name
   `-------------`
     cpuser
-    maxroach
+    <b>maxroach</b>
     root
   (3 rows)
 
@@ -327,12 +323,11 @@ root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb>
   <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SHOW databases;</b>
   database_name
   `-----------------`
-  bank
-  bank1
+  <b>bank</b>
   defaultdb
   postgres
   system
-  (5 rows)
+  (4 rows)
 
   Time: 2.890031ms</code></pre>
 
@@ -342,25 +337,24 @@ root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb>
 
   Time: 11.83841ms
 
-  root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>\d</b>
+  root@example-cockroachdb-public.cockroachdb-test:26257/bank> <b>\d</b>
   table_name
   `----------------------`
-  accounts
+  <b>accounts</b>
   jsontbl
   test_bank_customer
   (3 rows)
 
   Time: 3.684617ms</code></pre>
 
-  - Finally to view the unstructured JSON from the table run the `SELECT * from jsontbl;` command as follows:
-  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SELECT * from jsontbl;</b>
+  - Finally to view the accounts table use `SELECT` command as follows:
+  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SELECT * from accounts;</b>
   </code></pre>
 
-  ![cmd-output](doc/source/images/cmdoutput.png)
 
 # Summary
 
-We learn't how to get unstructured JSON data from a third-party REST API, created a table in CockroachDB and store the unstructured JSON data into the table. We also learn't to query the unstructured data from CockroachDB table into a pandas dataframe which can be further used for data engineering and data science tasks.
+We learn't how to perform Create, Read, Update and Delete operations on CockroachDB Operator using python runtime and Jupyter Notebook.
 
 # Reference
 
