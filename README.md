@@ -90,9 +90,9 @@ type: tutorial
 
 ---
 
-# Store and query unstructured JSON data from CockroachDB hosted on Red Hat Marketplace
+# Perform DML Operations with CockroachDB hosted on Red Hat Marketplace
 
-In this tutorial, we will learn how to get unstructured JSON data from an API, store it in CockroachDB hosted on Red Hat Marketplace, and query the unstructured JSON data from the table using python runtime and Jupyter notebook.
+In this tutorial, we will learn how to perform CRUD operations with CockroachDB hosted on Red Hat Marketplace using python runtime and Jupyter notebook.
 
 # About CockroachDB Operator
 
@@ -105,7 +105,7 @@ When you have completed this tutorial, you will understand how to:
 * Install CockroachDB Operator from Red Hat Marketplace on a OpenShift Cluster
 * Create a CockroachDB cluster instance
 * Create a user and database in CockroachDB
-* Store and query unstructured JSON data from a third-party API in CockroachDB
+* Perform DML Operations on CockroachDB
 * Manage CockroachDB cluster from the Cluster Overview page
 
 # Estimated time
