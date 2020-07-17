@@ -180,8 +180,20 @@ Completing this tutorial should take about 30 minutes.
 
 ![rhm](doc/source/images/create-project.png)
 
+### Step 3: Connect to the Openshift Cluster in CLI (Command Line Interface)
 
-### Step 2: Deploy CockroachDB Operator on OpenShift cluster
+- Login to the ROKS(IBM Managed) Openshift cluster through CLI(command line Iterface). 
+To login you would require token which can be genrated after you login to Openshift Cluster web console. See below screenshot to `copy the path`.
+![](doc/source/images/Login-CopyCommand.png)
+
+- A new window will open with the login token details. See below screenshot for details. Copy the login token as per the below screenshot.
+![](doc/source/images/Login-Token.png)
+
+- In terminal, paste the login command, Once you login you would see a similar screen as shown below.
+![](doc/source/images/CLI-Login.png)
+
+
+### Step 4: Deploy CockroachDB Operator on OpenShift cluster
 
 - CockroachDB is a cloud-native database—scalable, distributed SQL for Kubernetes. It is a great choice for OpenShift because it offers the familiarity and power of SQL with the comfort of your existing ORMs—and automated sharding ensures great performance as you scale your applications.
 
@@ -207,7 +219,7 @@ Completing this tutorial should take about 30 minutes.
 
 ![rhm-successmsg](doc/source/images/rhmsuccessmsg.png)
 
-### Step 2: Create a database instance
+### Step 5: Create a database instance
 
 - Log into your **OpenShift cluster** and look under `Operators > Installed Operators` to confirm the installation was successful.
 
@@ -301,7 +313,7 @@ root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb>
   $
   </code></pre>
 
-### Step 3: Access the admin console on your localhost
+### Step 6: Access the admin console on your localhost
 
 - Let us view the results of the commands we ran in the earlier steps via the `admin console`. The console can be accessed at localhost with port forwarding.
 
@@ -323,7 +335,7 @@ Forwarding from [::1]:8080 -> 8080
 
 ![cockroach-databases.png](doc/source/images/cockroachdatabases.png)
 
-### Step 4: Perform DML Operations on CockroachDB using python runtime and Jupyter Notebook
+### Step 7: Perform DML Operations on CockroachDB using python runtime and Jupyter Notebook
 
 - Once we have the CockroachDB UP and running, user and database created, we can now perform DML Operations on CockroachDB in a python runtime using Jupyter Notebook.
 
