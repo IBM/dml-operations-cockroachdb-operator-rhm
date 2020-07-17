@@ -122,53 +122,59 @@ Completing this tutorial should take about 30 minutes.
 
 ### Step 1: Configure Openshift Cluster(ROKS) with Redhat Market Place
 
-Follow the steps below to launch the cluster console which is also called RedHat OpenShift Container Platform.
+- Follow the steps below to launch the cluster console which is also called RedHat OpenShift Container Platform.
 
-Login to IBM Cloud Account and navigate to Dashboard
+- Login to [IBM Cloud Account](https://cloud.ibm.com/) and navigate to Dashboard as shown.
 
 ![rhm](doc/source/images/dashboard.png)
 
-Click on Clusters and select the cluster which you have created under prerequisites. In our case, cluster name is cp-rhm-poc.
+- Click on **Clusters** and select the cluster which you have created under prerequisites. In our case, cluster name is **cp-rhm-poc**.
 
 ![](doc/source/images/cluster.png)
 
-After you launch the cluster, click on OpenShift web console on the top right hand side.
+- After you launch the cluster, click on **OpenShift web console** on the top right hand side.
 
 ![](doc/source/images/web-console.png)
 
-We can see the RedHat OpenShift Container Platform (Web Console). Click on question mark ikon on the top right hand side and select Command Line Tools. 
+- We can see the RedHat OpenShift Container Platform (Web Console). Click on **question mark icon** on the top right hand side and select **Command Line Tools**. 
 
 ![](doc/source/images/cmd-line-tools.png)
 
-Navigate to the section `oc - OpenShift Command Line Interface (CLI)` and download the respective oc binary onto your local system. This is needed to manage OpenShift projects from a terminal and is further extended to natively support OpenShift Container Platform features.
+- Navigate to the section `oc - OpenShift Command Line Interface (CLI)` and download the respective oc binary onto your local system. 
+
+**NOTE: This is needed to manage OpenShift projects from a terminal and is further extended to natively support OpenShift Container Platform features.**
 
 ![](doc/source/images/oc-binary.png)
 
-We are all set to proceed to next step which is to register the OpenShift cluster on RedHat Marketplace platform. This is mandatory to install any operators from RedHat Marketplace platform using the OpenShift cluster.
+- We are all set to proceed to next step which is to register the OpenShift cluster on RedHat Marketplace platform. 
 
-## Register the cluster on RedHat Marketplace
+**NOTE: This is mandatory to install any operators from RedHat Marketplace platform using the OpenShift cluster**.
 
-Sign up and login to RHM portal at [Link](https://marketplace.redhat.com/en-us) and click on workspace and then click on cluster. We need to add our new OpenShift cluster and register it on RHM platform.
+#### Step 1.1: Register the cluster on RedHat Marketplace
+
+- Sign up and login to RHM portal at [Link](https://marketplace.redhat.com/en-us) and click on **workspace** and then click on cluster. We need to add our new OpenShift cluster and register it on RHM platform.
 
 ![](doc/source/images/add-cluster.png)
 
-Update the cluster name, generate the pull secret as per the instructions and save it. 
+- Update the **cluster name**, generate the pull secret as per the instructions and save it as shown.
 
 ![](doc/source/images/cluster-details.png)
 
-Copy the curl command which starts with `curl -sL https` and append the pull secret towards the end. The entire script should be handy to be used in next step.
+- Copy the curl command which starts with `curl -sL https` and append the pull secret towards the end. 
 
-We need to start the cluster first to register it. Open a command prompt and type oc login, update the username and password which are used for accessing the cluster and hit enter. 
+**NOTE: The entire script should be handy to be used in next step.**
+
+- We need to start the cluster first to register it. Open a terminal and type `oc login`, update the `username` and `password` which are used for accessing the cluster and hit enter. 
 
 ![](doc/source/images/start-cluster.png)
 
-The cluster is up and running at this point. We need to run the entire script which is from previous step and hit enter. It will take a couple of mins and we can see that we have successfully registered the cluster on RHM portal.
+- The cluster is up and running at this point. We need to run the entire script which is from previous step and hit enter. It will take a couple of mins and we can see that we have successfully registered the cluster on RHM portal.
 
 ![](doc/source/images/register-cluster.png)
 
-## Create a project in web console
+#### Step 1.2: Create a project in web console
 
-We need to create a project to be used and managed from command line. Click on Create Project and give a name as `Cockroachdb-test-project`.
+- We need to create a project to be used and managed from command line. Click on **Create Project** and give a name as `Cockroachdb-test-project`.
 
 ![rhm](doc/source/images/create-project.png)
 
