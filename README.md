@@ -122,6 +122,8 @@ Completing this tutorial should take about 30 minutes.
 
 ### Step 1: Configure Openshift Cluster(ROKS) with Redhat Market Place
 
+#### Step 1.1: Download OpenShift Command Line Interface (CLI) binary
+
 - Follow the steps below to launch the cluster console which is also called RedHat OpenShift Container Platform.
 
 - Login to [IBM Cloud Account](https://cloud.ibm.com/) and navigate to Dashboard as shown.
@@ -150,7 +152,7 @@ Completing this tutorial should take about 30 minutes.
 
 **NOTE: This is mandatory to install any operators from RedHat Marketplace platform using the OpenShift cluster**.
 
-#### Step 1.1: Register the cluster on RedHat Marketplace
+#### Step 1.2: Register the cluster on RedHat Marketplace
 
 - Sign up and login to RHM portal at [Link](https://marketplace.redhat.com/en-us) and click on **workspace** and then click on cluster. We need to add our new OpenShift cluster and register it on RHM platform.
 
@@ -172,7 +174,7 @@ Completing this tutorial should take about 30 minutes.
 
 ![](doc/source/images/register-cluster.png)
 
-#### Step 1.2: Create a project in web console
+#### Step 1.3: Create a project in web console
 
 - We need to create a project to be used and managed from command line. Click on **Create Project** and give a name as `Cockroachdb-test-project`.
 
