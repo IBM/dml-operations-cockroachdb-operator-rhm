@@ -3,12 +3,12 @@
 abstract:               # REQUIRED
 
 authors:
+ - name: "Srikanth Manne"
+   email: "srikanth.manne@in.ibm.com"
  - name: "Manoj Jahgirdar"
    email: "manoj.jahgirdar@in.ibm.com"
  - name: "Rahul Reddy Ravipally"
    email: "raravi86@in.ibm.com"
- - name: "Srikanth Manne"
-   email: "srikanth.manne@in.ibm.com"
  - name: "Manjula G. Hosurmath"
    email: "mhosurma@in.ibm.com"
 
