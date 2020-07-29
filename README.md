@@ -127,7 +127,7 @@ Completing this tutorial should take about 30 minutes.
 
 - Once you have successfully setup CockroachDB Operator on OpenShift Cluster we can create a database.
 
-### Step 2: Create a database instance
+### Step 2: Create a database in CockroachDB
 
 - Now, let's create a `user` and a `database`.
 
