@@ -52,9 +52,7 @@ title: Perform DML Operations with CockroachDB
 meta_title: Perform DML Operations with CockroachDB hosted on Red Hat Marketplace
 
 ---
-
-In this tutorial, learn how to perform DML operations with CockroachDB hosted on Red Hat® Marketplace using the Python runtime and a Jupyter notebook. 
-[CockroachDB](https://marketplace.redhat.com/en-us/products/cockroachdb-operator) is an elastic SQL database that easily scales transactions for your apps and services.
+The SQL commands that deal with data manipulation are categorised under Data Manipulation Language (DML). The commands include CREATE, INSERT, UPDATE, READ & DELETE a table. In this tutorial, we demonstrate working with these commands on a CockroachDB hosted on Red Hat Marketplace using the Python runtime and a Jupyter notebook. [CockroachDB](https://marketplace.redhat.com/en-us/products/cockroachdb-operator) is an elastic SQL database that easily scales transactions for your apps and services.
 
 ## Learning objectives
 
