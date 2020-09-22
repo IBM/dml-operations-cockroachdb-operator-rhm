@@ -1,6 +1,5 @@
 ---
 #Front matter (metadata).
-abstract:               # REQUIRED
 
 authors:
  - name: "Srikanth Manne"
@@ -12,287 +11,253 @@ authors:
  - name: "Manjula G. Hosurmath"
    email: "mhosurma@in.ibm.com"
 
-completed_date: 2020-01-20
+completed_date: 2020-09-21
+check_date: 2021-09-21
 
-components:
-- slug: "cockroachdb"
-  name: "CockroachDB"
-  url: "https://marketplace.redhat.com/en-us/products/cockroachdb-operator"
-  type: "component"
-- slug: "redhat-marketplace"
-  name: "Red Hat Marketplace"
-  url: "https://marketplace.redhat.com/"
-  type: "component"
+draft: true
 
-draft: true|false       # REQUIRED
+excerpt: In this tutorial, learn how to perform DML operations with CockroachDB hosted on Red Hat® Marketplace using the Python runtime and a Jupyter notebook.
 
-excerpt:                # REQUIRED
+abstract: In this tutorial, learn how to perform DML operations with CockroachDB hosted on Red Hat® Marketplace using the Python runtime and a Jupyter notebook.
 
-keywords:               # REQUIRED - comma separated list
+meta_keywords: 'CockroachDB operator, Red hat Marketplace
 
-last_updated:           # REQUIRED - Note: date format is YYYY-MM-DD
+related_content: 
+  - type: tutorials
+    slug: get-started-using-a-cockroachdb-operator-hosted-on-red-hat-marketplace
+  - type: tutorials
+    slug: store-and-query-unstructured-json-data-using-cockroachdb-hosted-on-rhm
+  - type: patterns
+    slug: build-library-management-system-cockroachdb-red-hat-marketplace
 
-primary_tag:          # REQUIRED - Note: Choose only only one primary tag. Multiple primary tags will result in automation failure. Additional non-primary tags can be added below.
+meta_keywords: 'CockroachDB operator, Red hat Marketplace'
 
-pta:                    # REQUIRED - Note: can be only one
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/primary-technology-area.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
- # - "cloud, container, and infrastructure"
-
-pwg:                    # REQUIRED - Note: can be one or many
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/portfolio-working-group.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
-# - "containers"
-
-related_content:        # OPTIONAL - Note: zero or more related content
-  - type: announcements|articles|blogs|patterns|series|tutorials|videos
-    slug:
-
-related_links:           # OPTIONAL - Note: zero or more related links
-  - title:
-    url:
-    description:
-
-runtimes:               # OPTIONAL - Note: Select runtimes from the complete set of runtimes below. Do not create new runtimes. Only use runtimes specifically in use by your content.
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/runtimes.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
- # - "asp.net 5"
-
-series:                 # OPTIONAL
- - type:
-   slug:
-
-services:               # OPTIONAL - Note: please select services from the complete set of services below. Do not create new services. Only use services specifically in use by your content.
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/services.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
-# - "blockchain"
-
-subtitle:               # REQUIRED
+primary_tag: databases
 
 tags:
-# Please select tags from the complete set of tags below. Do not create new tags. Only use tags specifically targeted for your content. If your content could match all tags (for example cloud, hybrid, and on-prem) then do not tag it with those tags. Less is more.
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/tags.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
- # - "blockchain"
+  - databases
+  - containers
 
-title:                  # REQUIRED
+related_links:
+  - title: '"CockroackDB on Red Hat Marketplace'
+    url: 'https://marketplace.redhat.com/en-us/products/cockroachdb-operator'
+  - title: Red Hat Marketplace
+    url: '"https://marketplace.redhat.com/'
 
-translators:             # OPTIONAL - Note: can be one or more
-  - name:
-    email:
+collections:
+  - "red-hat-marketplace"
 
-type: tutorial
+subtitle: Perform DML Operations with CockroachDB hosted on Red Hat Marketplace
+title: Perform DML Operations with CockroachDB
+meta_title: Perform DML Operations with CockroachDB hosted on Red Hat Marketplace
 
 ---
 
-# Perform DML Operations with CockroachDB hosted on Red Hat Marketplace
+In this tutorial, learn how to perform DML operations with CockroachDB hosted on Red Hat® Marketplace using the Python runtime and a Jupyter notebook. 
+[CockroachDB](https://marketplace.redhat.com/en-us/products/cockroachdb-operator) is an elastic SQL database that easily scales transactions for your apps and services.
 
-In this tutorial, we will learn how to perform CRUD operations with CockroachDB hosted on Red Hat Marketplace using python runtime and Jupyter notebook.
-
-# About CockroachDB Operator
-
-CockroachDB is a ultra resilient, distributed SQL that can easily scale-out serializable transactions for your apps and services. It is cloud-native, architected to simplify scale and also guarantee consistent transactions across multiple regions and multiple clouds. [Learn more](https://marketplace.redhat.com/en-us/products/cockroachdb-operator).
-
-# Learning objectives
+## Learning objectives
 
 When you have completed this tutorial, you will understand how to:
 
-* Install CockroachDB Operator from Red Hat Marketplace on a OpenShift Cluster
+* Install a CockroachDB Operator from Red Hat Marketplace on a OpenShift Cluster
 * Create a CockroachDB cluster instance
 * Create a user and database in CockroachDB
-* Perform DML Operations on CockroachDB
-* Manage CockroachDB cluster from the Cluster Overview page
+* Perform DML operations on CockroachDB
+* Manage a CockroachDB cluster from the Cluster Overview page <--EM: in the RH OpenShift console?-->
 
-# Estimated time
+## Estimated time
 
 Completing this tutorial should take about 30 minutes.
 
-# Pre-requisites
+## Pre-requisites
 
 1. [Red Hat Marketplace Account](https://marketplace.redhat.com/en-us/registration/om).
 2. [Red Hat OpenShift Cluster](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). 
-3. [OC & kubectl CLI](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html).
+3. [OpenShift container & kubectl CLI](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html).
+4. Access to a Jupyter Notebook. You can [install a Jupyter Notebook from python-pip](https://jupyter.org/install) or use a tool such as [Anaconda](https://www.anaconda.com/products/individual) to open the Jupyter Notebook.
 
-# Steps
+## Steps
 
 ### Step 1: Install the CockroachDB Operator from Red Hat Marketplace on OpenShift Cluster
 
-- Steps to Deploy CockroachDB Operator from Red Hat Marketplace on a OpenShift Cluster can be found here,
-  - [Steps to Deploy CockroachDB Operator](https://github.com/IBM/rhm-operator-deployment-steps)
+Follow the steps in this tutorial to deploy a CockroachDB Operator from Red Hat Marketplace on an OpenShift Cluster:
+  - [Get started using a CockroachDB Operator hosted on Red Hat Marketplace](https://developer.ibm.com/tutorials/get-started-using-a-cockroachdb-operator-hosted-on-red-hat-marketplace/)
 
-- Once you have successfully setup CockroachDB Operator on OpenShift Cluster we can create a database.
+Once you have successfully set up a CockroachDB Operator on an OpenShift Cluster you can create a database.
+
 
 ### Step 2: Create a database in CockroachDB
 
-- Now, let's create a `user` and a `database`.
+Now, let's create a `user` and a `database`.
 
-- Run the following command to spin up a CockroachDB client:
+1. Run the following command to spin up a CockroachDB client:
 
-```bash
-$ kubectl run -it --rm cockroach-client \
---image=cockroachdb/cockroach \
---restart=Never \
---command -- \
-./cockroach sql --insecure --host=example-cockroachdb-public.cockroachdb-test
-```
+    ```bash
+    $ kubectl run -it --rm cockroach-client \
+    --image=cockroachdb/cockroach \
+    --restart=Never \
+    --command -- \
+    ./cockroach sql --insecure --host=example-cockroachdb-public.cockroachdb-test
+    ```
 
-- This should run the CockroachDB client and take you to a `SQL Command Prompt` as shown. If you don't see a command prompt, try pressing enter.
+    This should run the CockroachDB client and take you to a `SQL Command Prompt` as shown. If you don't see a command prompt, try pressing Enter.
 
-```bash
-root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb>
-```
+    ```bash
+    root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb>
+    ```
 
-- From the CockroachDB client, run the following commands:
+1. From the CockroachDB client, run the following commands:
 
-  - Create a user `maxroach` as follows:
-  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>CREATE USER IF NOT EXISTS maxroach;</b>
-  CREATE USER 1
+    * Create a user `maxroach` as follows:
+      <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>CREATE USER IF NOT EXISTS maxroach;</b>
+      CREATE USER 1
 
-  Time: 9.580878ms
-  </code></pre>
+      Time: 9.580878ms
+      </code></pre>
   
-  - Create a database `bank` as follows:
-  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>CREATE DATABASE bank;</b>
-  CREATE DATABASE
+    * Create a database `bank` as follows:
+      <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>CREATE DATABASE bank;</b>
+      CREATE DATABASE
 
-  Time: 14.449525ms
-  </code></pre>
+      Time: 14.449525ms
+      </code></pre>
   
-  - Give our user, `maxroach`, permission to update our database, `bank` as follows:
-  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>GRANT ALL ON DATABASE bank TO maxroach;</b>
-  GRANT
+    * Give our user, `maxroach`, permission to update our database, `bank` as follows:
+      <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>GRANT ALL ON DATABASE bank TO maxroach;</b>
+      GRANT
   
-  Time: 9.308095ms
-  </code></pre>
+      Time: 9.308095ms
+      </code></pre>
   
-- At this point we have a `user` and a `database`.
+    At this point, you should have a `user` and a `database`.
 
-- Type `\q` to quit the client console as shown:
-<pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>\q</b>
-  pod "cockroach-client" deleted
-  $
-  </code></pre>
+    * Type `\q` to quit the client console as shown:
+    <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>\q</b>
+      pod "cockroach-client" deleted
+      $
+      </code></pre>
 
 ### Step 3: Access the admin console on your localhost
 
-- Let us view the results of the commands we ran in the earlier steps via the `admin console`. The console can be accessed at localhost with port forwarding.
+The following steps show you how to view the results of the commands you ran in the earlier steps via the `admin console`. You can access the console at localhost with port forwarding.
 
-- Run the following command to port forward `8080`:
-```bash
-$ kubectl port-forward example-cockroachdb-0 8080
-```
+> Note: You need to be logged in to your OpenShift Cluster with the OC login that you accessed in [Step 2: Connect to the OpenShift cluster in your CLI](https://developer.ibm.com/tutorials/get-started-using-a-cockroachdb-operator-hosted-on-red-hat-marketplace/#2-connect-to-the-openshift-cluster-in-your-cli).
 
-```
-Forwarding from 127.0.0.1:8080 -> 8080
-Forwarding from [::1]:8080 -> 8080
-```
+1. Run the following command to port forward `8080`:
 
-- Visit <http://localhost:8080> on your browser as shown. The page should load the cluster overview.
+    ```bash
+    $ kubectl port-forward example-cockroachdb-0 8080
+    ```
 
-![cockroach-clusteroverview](doc/source/images/cockroachclusteroverview.png)
+    ```
+    Forwarding from 127.0.0.1:8080 -> 8080
+    Forwarding from [::1]:8080 -> 8080
+    ```
 
-- You can click on `databases` to view the `bank` database that we created earlier as shown.
+1. Visit <http://localhost:8080> on your browser as shown. The page should load the cluster overview.
 
-![cockroach-databases.png](doc/source/images/cockroachdatabases.png)
+    ![cockroach-clusteroverview](images/cockroachclusteroverview.jpg)
 
-### Step 4: Perform DML Operations on CockroachDB using python runtime and Jupyter Notebook
+1. Click on `databases` to view the `employees` database that you created earlier.
 
-- Once we have the CockroachDB UP and running, user and database created, we can now perform DML Operations on CockroachDB in a python runtime using Jupyter Notebook.
+    ![cockroach-databases](images/cockroachdatabases.jpg)
 
-- In Terminal run the following command to port forward `26257` port from the CockroachDB database instance which we will be using in our Jupyter Notebook to establish a connection with the CockroachDB database instance.
+### Step 4: Perform DML operations on CockroachDB using python runtime and Jupyter Notebook
 
-```bash
-$ kubectl port-forward example-cockroachdb-0 26257
-```
+Once you have the CockroachDB up and running and your user and database created, you can now perform DML Operations on CockroachDB in a Python runtime using a Jupyter Notebook.
 
-```
-Forwarding from 127.0.0.1:26257 -> 26257
-Forwarding from [::1]:26257 -> 26257
-```
+1. In your terminal, run the following command to port forward the `26257` port from the CockroachDB database instance. You will use this port in your Jupyter Notebook to establish a connection with the CockroachDB database instance.
 
-- We will be working with Jupyter Notebook, you can use tools like [Anaconda](https://www.anaconda.com/products/individual) to open the Jupyter Notebook or [install Jupyter Notebook from python-pip](https://jupyter.org/install).
+    ```bash
+    $ kubectl port-forward example-cockroachdb-0 26257
+    ```
 
-- Download and open the notebook [dml-operations-with-cockroachdb.ipynb](dml-operations-with-cockroachdb.ipynb) in your local machine.
+    ```
+    Forwarding from 127.0.0.1:26257 -> 26257
+    Forwarding from [::1]:26257 -> 26257
+    ```
 
-- Click on the **Cell** tab and click on **Run All** as shown.
+1. Download and open the following Jupyter notebook [dml-operations-with-cockroachdb.ipynb](dml-operations-with-cockroachdb.ipynb) in your local machine.
 
-![nb-run](doc/source/images/nbruncell.png)
+1. Select the **Cell** tab and click **Run All**.
 
-- You can now follow the notebook instructions for more details on what is happening in each cell.
+    ![nb-run](doc/source/images/nbruncell.png)
 
-- After we have execuited the notebook, we can verify the table in the ClockroachDB instance through the CockroachDB client from terminal.
+    Follow the notebook instructions for more details on what is happening in each cell.
 
-- In terminal Run the following command to spin up a CockroachDB client:
+    After you execute the notebook, from your terminal, verify the table in the ClockroachDB instance through the CockroachDB client.
 
-```bash
-$ kubectl run -it --rm cockroach-client \
---image=cockroachdb/cockroach \
---restart=Never \
---command -- \
-./cockroach sql --insecure --host=example-cockroachdb-public.cockroachdb-test
-```
+1. In your terminal, run the following command to spin up a CockroachDB client:
 
-- This should run the CockroachDB client and take you to a `SQL Command Prompt` as shown. If you don't see a command prompt, try pressing enter.
+    ```bash
+    $ kubectl run -it --rm cockroach-client \
+    --image=cockroachdb/cockroach \
+    --restart=Never \
+    --command -- \
+    ./cockroach sql --insecure --host=example-cockroachdb-public.cockroachdb-test
+    ```
 
-```bash
-root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb>
-```
+1. This should run the CockroachDB client and take you to a `SQL Command Prompt` as shown. If you don't see a command prompt, press **Enter**.
 
-- From the CockroachDB client, run the following commands to view `user`, `database` and `table` which was created with the Jupyter Notebook:
+    ```bash
+    root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb>
+    ```
 
-  - View `users` by running the `SHOW users;` command as follows:
-  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SHOW users;</b>
-   user_name
-  `-------------`
-    cpuser
-    <b>maxroach</b>
-    root
-  (3 rows)
+1. From the CockroachDB client, run the following commands to view `user`, `database` and `table` which was created with the Jupyter Notebook:
 
-  Time: 3.037641ms
-  </code></pre>
+    * View `users` by running the `SHOW users;` command:
+    
+      <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SHOW users;</b>
+       user_name
+      `-------------`
+        cpuser
+        <b>maxroach</b>
+        root
+      (3 rows)
 
-  - View `databases` by running the `SHOW databases;` command as follows:
-  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SHOW databases;</b>
-  database_name
-  `-----------------`
-  <b>bank</b>
-  defaultdb
-  postgres
-  system
-  (4 rows)
+      Time: 3.037641ms
+      </code></pre>
 
-  Time: 2.890031ms</code></pre>
+ 1. View `databases` by running the `SHOW databases;` command as follows:
+  
+    <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SHOW databases;</b>
+    database_name
+    `-----------------`
+    <b>bank</b>
+    defaultdb
+    postgres
+    system
+    (4 rows)
 
-  - To view the tables present in `bank` database, run the `USE bank;` command to switch to `bank` database, and run `\d` command to view the `tables` as follows:
-  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>USE bank;</b>
-  SET
+    Time: 2.890031ms</code></pre>
 
-  Time: 11.83841ms
+1. To view the tables present in `bank` database, run the `USE bank;` command to switch to `bank` database. Run `\d` command to view the `tables` as follows:
+ 
+    <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>USE bank;</b>
+    SET
 
-  root@example-cockroachdb-public.cockroachdb-test:26257/bank> <b>\d</b>
-  table_name
-  `----------------------`
-  <b>accounts</b>
-  jsontbl
-  test_bank_customer
-  (3 rows)
+    Time: 11.83841ms
 
-  Time: 3.684617ms</code></pre>
+    root@example-cockroachdb-public.cockroachdb-test:26257/bank> <b>\d</b>
+    table_name
+    `----------------------`
+    <b>accounts</b>
+    jsontbl
+    test_bank_customer
+    (3 rows)
 
-  - Finally to view the accounts table use `SELECT` command as follows:
-  <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SELECT * from accounts;</b>
-  </code></pre>
+    Time: 3.684617ms</code></pre>
+
+1. Finally, to view the accounts table, use the `SELECT` command:
+    
+    <pre><code>root@example-cockroachdb-public.cockroachdb-test:26257/defaultdb> <b>SELECT * from accounts;</b>
+   </code></pre>
 
 
 # Summary
 
-We learn't how to perform Create, Read, Update and Delete operations on CockroachDB Operator using python runtime and Jupyter Notebook.
+This tutorial showed you how to perform DML operations on CockroachDB Operator using python runtime and Jupyter Notebook.
 
 # Reference
 
